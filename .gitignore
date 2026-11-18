@@ -1,0 +1,65 @@
+# Build outputs (Xcode derived data, produced by the scripts under dm/ios)
+.iosdd/
+.iosdd_mac/
+.iosdd_*/
+.DS_Store
+__pycache__/
+
+# RomFS archives (generated from your own game files; never commit game data)
+*.idx
+romfs.[0-9][0-9]
+
+# Swift Package build products and the packaged app (rebuild with `swift build -c release`)
+frontend/.build/
+frontend/NS Port Builder.app/
+frontend/nxnative.app/
+
+# Made from each shader build's Mac outputs (c1_guard.py, cb_extent.py; the NSP script makes them), not committed
+dm/games/*/c1_full.tsv
+dm/games/*/cb_extent.tsv
+
+# Swift build products at the repository root (a stray build run)
+.build/
+sync.log
+
+# PyInstaller output (frontend-qt)
+frontend-qt/build/
+frontend-qt/dist/
+frontend-qt/*.spec
+layout_*.tsv
+
+# Release packages: built by CI and attached to a release, never committed (a 0.4.6 build had one
+# in the tree, and it stayed until 2026-10-27)
+frontend/*.zip
+frontend/NX2Apple.app/
+
+# the virtual environment the README creates for the Python packages
+.venv/
+.slim/deepwork/
+
+# never commit game or user data
+*.pak
+*.nsp
+*.xci
+*.nsz
+*.kip
+*.romfs
+*.wad
+*.keys
+prod.keys
+title.keys
+*.sav
+*.fslog
+*.pso
+*.ipa
+*.dmg
+.env
+gen/*/game_profile.h
+snapshots/
+mods/
+.unlazy/
+research/
+
+# App UI assets: kept on disk, not published in the clean root
+frontend/icon.iconset/
+frontend/screenshots/

@@ -1,0 +1,4 @@
+# Benchmark routes for scripts/bench.py: name, DM_KEYS, window start (s), window length (s), description.
+# DBFZ title screen at 60fps. No scripted input: a stable scene for controlled A/B of host switches.
+# A combat route should be recorded with DM_REC once a repeatable fight path is available.
+title-stand		30	30	title screen idle, no input; stable scene for switch A/B
