@@ -93,7 +93,7 @@ class Regress(unittest.TestCase):
         self.assertEqual(regress.msl_io('fragment main0_out main0(constant X& x [[buffer(0)]])\n{\n}\n', 'main0', 'ps'), {})   # no stage inputs
 
     def test_red_normalized(self):
-        a = regress.normalize_red('[dm] [RED] shader 0a91af5bef8578e2: 12 bindings at 0x1f00 in /Volumes/NX/games/x [y]/b')
+        a = regress.normalize_red('[dm] [RED] shader 0a91af5bef8578e2: 12 bindings at 0x1f00 in /path/to/your/NSP/folder [y]/b')
         b = regress.normalize_red('[dm] [RED] shader 1b91af5bef8578e3: 7 bindings at 0x2000 in /tmp/z')
         self.assertEqual(a, b)
         # Scarlet: one red line, its register zero in one run ("x1=0") and not in the other ("x1=0x1")
@@ -104,7 +104,7 @@ class Regress(unittest.TestCase):
 
     def test_red_missing_libraries(self):   # Tears of the Kingdom, 2026-10-28: ~2,000 shaders per run the chain build does not hold, other names each run
         M = regress.MISSING_LIB
-        lib = '/Volumes/T7/nsp/The Legend of Zelda Tears of the Kingdom/0100F2C0115B6000-work/regress/chain/nvn-a78f966a7b38-922b2b7671c9-7fb6953e58a81bc8/b-a78f966a7b38'
+        lib = '/path/to/your/NSP/The Legend of Zelda/0100F2C0115B6000-work/regress/chain/nvn-a78f966a7b38-922b2b7671c9-7fb6953e58a81bc8/b-a78f966a7b38'
         fused = (f'[dm] [nvn-mtl] [RED] failed to load shader c41c950044f80287_b: cannot open {lib}/c41c950044f80287_b.metallib'
                  f'[dm] [nvn-mtl] [RED] failed to load shader 3470b30952386168_b: cannot open {lib}/3470b30952386168_b.metallib')
         self.assertEqual([regress.normalize_red(m) for m in regress.red_messages(fused)], [M, M])   # two threads' messages on one line (LOG before the stream lock)

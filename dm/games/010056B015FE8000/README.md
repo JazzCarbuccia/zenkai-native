@@ -33,7 +33,7 @@ Update 1.0.3 (v131072) over the base cartridge dump. PlatinumGames' engine, SDK 
 - **Resolved: repeated geometry drains and sorting.** The original heavy flight route spent most sampled main-thread time waiting in `mdi_wait`, followed by sorting capture indices. The shared synchronization/bitset fix linked below removes those hotspots.
 - **Resolved: serial geometry prefix scan.** A GPU profile of frame 4,600 in the 720p `fps60_seg` records 79 geometry sequences: 7.246 ms in their serial scans out of a 16.19 ms GPU span, with 521 encoders. The general parallel scan and combined compute encoder preserve ordered primitive compaction; native checks cover 129,032 groups and the translated geometry stages. The final 1080p route's frame 4,600 uses 284 encoders, 4.19 ms compute/copy and an 11.17 ms GPU span. The mode and camera timing differ, so these totals are supporting encoder evidence rather than an isolated same-frame speedup.
 - Initial upstream build validation (before the integration below): both standard NSP build workflows pass. The unsigned `NieRAutomata.ipa` is 11,712,290,740 bytes (about 10.9 GiB), with all 1,225 Mac/iOS shader libraries on chain `20fe3d62b9f6` and 331 recorded prewarm entries. Its four cuts and all three embedded main sections match the tested rewrite; all 3,551 archive entries pass CRC verification. The normal Mac executable is `010056B015FE8000_build/tools/dmhost`.
-- Work folder: `/Volumes/T7/nsp/NieR Automata The End of YoRHa Edition/010056B015FE8000-work`. `run/boot.py <name> <seconds> [KEY=VALUE ...]` runs the adjacent `010056B015FE8000_build/tools/dmhost` with bounded duration, control file `run/<name>.ctl`, logs and save data beside it.
+- Work folder: `/path/to/your/NSP/folder/010056B015FE8000-work`. `run/boot.py <name> <seconds> [KEY=VALUE ...]` runs the adjacent `010056B015FE8000_build/tools/dmhost` with bounded duration, control file `run/<name>.ctl`, logs and save data beside it.
 
 ## 60 fps
 
@@ -142,10 +142,7 @@ The earlier direct-encoding experiment is not forced. The iPhone retest below is
 
 The author of [PR #336](https://github.com/seedds/nxnative/pull/336) reports a complete playthrough at stable 60 FPS on that revision. The 2B/Adam capture below shows 60.00 FPS, 8.48 ms GPU time and a 16.67 ms frame interval on macOS 27.0. That screenshot is one scene; the full-game result comes from that reported playthrough, not from the still image. The HUD's 2560×1440 value is the presentation size, not proof of the game's internal render resolution.
 
-![NieR on M4 Pro: 2B facing Adam, HUD at 60.00 FPS](../../../docs/images/nier-mac-m4-pro-adam-gameplay.png)
-
 ### iPhone: 17 Pro Max
 
 The author of PR #336 reports improved performance after retesting that revision on iPhone 17 Pro Max. It reaches 60 FPS in some areas, but it is not a constant 60 FPS through the whole game. The 2B/9S Bunker capture below shows 59.99 FPS, 11.23 ms GPU time and a 16.67 ms frame interval on iOS 27.0. This is a scene-specific example, not a full-game 60 FPS claim.
 
-![NieR on iPhone 17 Pro Max: 2B and 9S in the Bunker, HUD at 59.99 FPS](../../../docs/images/nier-iphone17-pro-max-bunker-gameplay.png)

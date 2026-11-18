@@ -139,7 +139,7 @@ completed; no cross-game comparison coverage is claimed for that sweep.
 
 ## Mac development files
 
-The supplied folder is `/Volumes/S790/nsp/Xenoblade Chronicles 3/`. Extraction,
+The supplied folder is `/path/to/your/NSP/folder/`. Extraction,
 the shader packages and isolated hosts are in `010074F013262000_build/`; analysis,
 private keys, Python tools and isolated runs are in `010074F013262000-work/`.
 `run/boot.py` accepts a log name, duration and environment assignments. Diagnostic

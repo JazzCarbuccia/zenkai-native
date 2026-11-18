@@ -51,7 +51,7 @@ class CleanTest(unittest.TestCase):
         self.assertEqual(cmc.etime_s('05:07'), 307)
         self.assertEqual(cmc.etime_s('02:05:07'), 7507)
         self.assertEqual(cmc.etime_s('3-02:05:07'), 266707)
-        out = '  04:51 /Volumes/T7/nsp/The Legend of Zelda [x]/regress/host/efe4/dmhost\n  1-00:00:00 /sbin/launchd\n'
+        out = '  04:51 /path/to/your/NSP/The Legend of Zelda [x]/regress/host/efe4/dmhost\n  1-00:00:00 /sbin/launchd\n'
         with mock.patch.object(cmc.subprocess, 'run', return_value=mock.Mock(returncode=0, stdout=out, stderr='')):
             self.assertEqual(cmc.host_starts(NOW), [NOW - 291])
         with mock.patch.object(cmc.subprocess, 'run', return_value=mock.Mock(returncode=1, stdout='', stderr='no')):

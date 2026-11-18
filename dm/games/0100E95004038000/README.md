@@ -220,7 +220,7 @@ this integration. The regression reports above also refer to that base.
 
 ## Mac development files
 
-The supplied folder is `/Volumes/S790/nsp/Xenoblade Chronicles 2/`. Extraction,
+The supplied folder is `/path/to/your/NSP/folder/`. Extraction,
 rewritten modules and shader builds live in `0100E95004038000_build/`; binary
 analysis, bounded runs, saves and logs live in `0100E95004038000-work/`.
 `run/boot.py` accepts a log name, duration and environment assignments.

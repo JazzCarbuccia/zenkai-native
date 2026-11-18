@@ -29,7 +29,7 @@ Update 1.0.1 (v65536) over the base game. PlatinumGames' engine, SDK 6.4.0, NVN,
 - Wwise opens a stereo `AudioOut`; the 15-minute `play03` run reaches 84,000 device callbacks with zero reported underruns. Resident memory grows from 1.44 GB at the title to 2.57 GB on entering the tutorial; Metal allocated memory is about 3.02 GB there.
 - The first boot rendered in a Mac window. A later windowed run stalled in the display link; the sustained measurements and screenshots use `DM_WINDOW` unset and `DM_PRESENT_LINK=0`. They measure offscreen native rendering, not on-screen presentation quality.
 - **Current:** entering the motorcycle scene reports one cube/2D texture mismatch, handled by the existing [zero-cube fallback](../../../docs/reference/rendering.md#a-2d-texture-in-a-cube-slot-binds-the-zero-cube). The scene renders, but that binding has not been traced to establish whether it is an intentional placeholder.
-- Work folder: `/Volumes/T7/nsp/ASTRAL CHAIN/01007300020FA000-work`. `run/boot.py <log-name> <seconds> [KEY=VALUE ...]` launches a bounded run, with its control file at `run/<log-name>.ctl`, logs and saves beside it. The build artifacts and extracted data are in the adjacent `01007300020FA000_build`.
+- Work folder: `/path/to/your/NSP/folder/01007300020FA000-work`. `run/boot.py <log-name> <seconds> [KEY=VALUE ...]` launches a bounded run, with its control file at `run/<log-name>.ctl`, logs and saves beside it. The build artifacts and extracted data are in the adjacent `01007300020FA000_build`.
 
 ## Frame rate
 
