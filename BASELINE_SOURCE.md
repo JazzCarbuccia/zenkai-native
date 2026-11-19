@@ -22,9 +22,6 @@ recorded rather than inherited:
   Copyright (c) 2026 seedds), which itself grew out of `jhaizhou`'s `d2r-mobile`
   (MIT, Copyright (c) 2026 jhaizhou). LNPANDY's own contribution is the RomFS archive
   subsystem.
-- `.upstream-ref` = `ee6648cb2bb46c19255c1d04f88e9c40d36ef6b4`, the nxnative commit this
-  tree was synchronized against. That object is not in this repository's history; it is a
-  reference point, not an ancestor.
 
 ## Licence
 
@@ -49,19 +46,17 @@ The local uncommitted work of the source tree at `e9c351d6`, 25 files (+317 / �
 - **Input polling diagnostics** (`DM_POLLLOG`) — `dm/host/hle_hid.c`.
 - **DBFZ benchmark route** — `dm/games/0100A250097F0000/bench.tsv` (untracked in the
   source tree; copied in, not committed there).
-- **Mario Kart 8 Deluxe split-screen 60 fps** — `fps_target 60` in
-  `dm/games/0100152000022000/game.tsv`.
-- **Dark Souls Remastered 1.0.0 60 fps patch offsets** —
-  `dm/games/01004AB00A260000/patches.py`.
+- **Other titles' profile changes** — Mario Kart 8 Deluxe split-screen 60 fps and Dark Souls
+  Remastered 60 fps offsets were part of the imported baseline; those profiles are removed from
+  this Zenkai-only tree.
 - **Frontend / IPA builder** — `frontend/Sources/NSPortBuilder/AppUpdate.swift`,
   `frontend/Tests/NSPortBuilderTests/AppUpdateTests.swift`,
   `scripts/build_ipa_from_nsp.py`, `dm/tools/tests/test_nsp_incremental.py`.
 - **`.gitignore`** — the source tree's own ignore entry, plus the data-boundary block
   below.
 
-It also **removes another title's game configuration** — the nine files under
-`dm/games/0100F43008C44000/` (the bulk of the 54,969 deleted lines). That removal is
-intended, not an accident of the import.
+It also **removes another title's game configuration** — nine files of a non-DBFZ profile
+(the bulk of the 54,969 deleted lines). That removal is intended, not an accident of the import.
 
 ## What it deliberately excludes
 

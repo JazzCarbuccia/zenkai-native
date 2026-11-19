@@ -37,8 +37,7 @@ NX2Apple 用你自己导出的游戏文件，在你的 Mac 和 iPhone 上运行 
 
 
 它是 **[nxnative](https://github.com/seedds/nxnative)** 的社区 fork。真正的工作（代码改写器、Horizon
-宿主层、NVN-on-Metal 和每个游戏的 profile）都是 nxnative 的；本 fork 在其上增加启动器和少量补丁，
-并每天跟随 nxnative 更新。
+宿主层、NVN-on-Metal 和每个游戏的 profile）都是 nxnative 的；本 fork 在其上增加启动器。
 
 ## 环境要求
 
@@ -110,8 +109,8 @@ iPhone 上在「文件」App 里该 App 名字下：`save/` 和 `log.txt`（上�
 
 ## 限制
 
-- **只支持有 profile 的游戏。** 列表之外的游戏需要单独的 bring-up 工作；起点是
-  [docs/agents](docs/agents/README.md)（上游为其他 Switch 游戏写的指南，英文）。
+- **只支持《龙珠斗士 Z》。** 本仓库只包含一个游戏；其他游戏的 profile 由构建时从用户自己的游戏文件生成，
+  不包含在仓库中。
 - **大体积游戏在 iPhone 上会碰到内存上限。** 没有 Increased Memory Limit entitlement 时 iOS 只给 App
   约 3.4 GB，不够《王国之泪》用。App 请求了它，AltStore Classic 2.2+、Impactor 和 Xcode + Personal Team
   会保留；SideStore 配合免费 Apple ID 需要对 App ID 做一次性修复，Sideloadly 会丢掉它
@@ -124,11 +123,8 @@ iPhone 上在「文件」App 里该 App 名字下：`save/` 和 `log.txt`（上�
 ## 给开发者
 
 - **从源码构建：** [BUILDING.zh-CN.md](BUILDING.zh-CN.md)。**报告或修复问题：** [CONTRIBUTING.zh-CN.md](CONTRIBUTING.zh-CN.md)。
-- **本 fork 对上游改了什么：** 引擎（`dm/`、`scripts/`、`docs/`、`ref/`）就是 nxnative 在固定提交上的
-  内容，加一组补丁，每个补丁写明本 fork 为什么带着它。见 [patches/README.md](patches/README.md)；
-  `python3 scripts/patches.py status` 列出带着的全部补丁。每天一次的任务移动固定提交并开 pull request，
-  某个补丁对不上时开一个点名该补丁的 issue。
-- **其他 Switch 游戏：** [docs/agents](docs/agents/README.md)（解包、二进制调查、bring-up）。
+- **本 fork 对上游改了什么：** 引擎（`dm/`、`scripts/`、`docs/`、`ref/`）是 nxnative 的一份 vendored 快照，
+  来源记录在 [BASELINE_SOURCE.md](BASELINE_SOURCE.md)。这个仅含 Zenkai 的仓库不带补丁队列，也不做上游同步。
 - **版本历史：** [CHANGELOG.zh-CN.md](CHANGELOG.zh-CN.md)。
 
 ## 致谢
@@ -140,7 +136,7 @@ iPhone 上在「文件」App 里该 App 名字下：`save/` 和 `log.txt`（上�
 
 想加入这个列表？[参与贡献](CONTRIBUTING.zh-CN.md#帮忙补充游戏)写了怎么开始；issue 里附上完整日志的报告和带测试的修复最快。
 
-所有底层引擎的工作都是别人的。本仓库在其之上增加了启动器和补丁队列：
+所有底层引擎的工作都是别人的。本仓库在其之上增加了启动器：
 
 - **[nxnative](https://github.com/seedds/nxnative)**（MIT）—— 本仓库所基于的原生执行工具链：
   NSO 重写器、Horizon 宿主层、NVN-on-Metal、各游戏 profile 和 iOS 外壳。
@@ -177,3 +173,4 @@ NSP/XCI 导出文件，且不连接任何服务器。它不绕过、不移除、
 
 **无担保。** 本软件按 [LICENSE](LICENSE) 中的许可证（本 fork 在上游之上有所附加，见致谢）以"现状"
 提供，不附带任何明示或默示的担保。使用风险自负。
+                                                                                                                                                                                                                                                                                                                                                                                            
