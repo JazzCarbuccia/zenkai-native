@@ -1,5 +1,5 @@
-name: Launcher problem or idea
-description: A problem with the NX2Apple app itself (library, settings, update, controller) or an idea for it
+name: Build tooling problem or idea
+description: A problem with the Zenkai Native build tooling or an idea for it
 body:
   - type: markdown
     attributes:
@@ -31,9 +31,9 @@ body:
   - type: input
     id: version
     attributes:
-      label: NX2Apple version
-      description: The version shown under Settings, or the release you downloaded.
-      placeholder: v0.4.8
+      label: Zenkai Native version
+      description: The Zenkai Native tree or commit you built from.
+      placeholder: "Phase 0 / baseline import"
     validations:
       required: true
   - type: input

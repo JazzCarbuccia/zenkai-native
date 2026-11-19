@@ -1,14 +1,14 @@
 # Building from source
 
-The launcher (see the [README](README.md)) runs the same scripts a terminal does. This page is the by-hand route, for advanced users, for development, or when the launcher is not an option: the tools, your `prod.keys`, and the IPA built from a terminal. Contributing rules are in [CONTRIBUTING.md](CONTRIBUTING.md).
+Zenkai Native is built from a terminal with the script in this repository (see the [README](README.md)). This page documents that single build path: the tools, your `prod.keys`, and the Mac app built from a terminal. Contributing rules are in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Get the tools
 
-This is the command-line route the launcher drives for you. The build is upstream's. Follow upstream's [README](https://github.com/seedds/nxnative) to install Xcode, Homebrew tools and the Python packages, then pack an IPA.
+This is the supported command-line build path. The underlying build is upstream's. Follow upstream's [README](https://github.com/seedds/nxnative) to install Xcode, Homebrew tools and the Python packages, then pack the app.
 
 ```bash
-git clone https://github.com/<you>/NX2Apple.git
-cd NX2Apple
+git clone https://github.com/<you>/zenkai-native.git
+cd zenkai-native
 brew bundle --file=Brewfile                       # xcodegen, zstd, spirv-cross, glslang (the NSP script checks for it), .NET SDK
 python3 -m venv .venv                             # Homebrew's Python refuses global pip installs (PEP 668)
 .venv/bin/python -m pip install lz4 capstone fonttools zbic nsz "backports.zstd; python_version < '3.14'"
@@ -71,4 +71,4 @@ GAME=<title id> W=<work dir> PATCHED=<patched dir> \
 `--full-romfs` (or `DM_FULL_ROMFS=1`) packs the RomFS into the package instead — upstream's
 behaviour, only sensible for small games.
 
-The RomFS no longer has to be packed into a shard archive: the build writes the game's data as a single `romfs.img`. Shard archives made earlier (`romfs.idx` with `romfs.00`, `romfs.01`, …) are no longer read; the launcher reports such a folder as having no game data, and the data is sent again once as a `romfs.img`.
+The RomFS no longer has to be packed into a shard archive: the build writes the game's data as a single `romfs.img`. Shard archives made earlier (`romfs.idx` with `romfs.00`, `romfs.01`, …) are no longer read; the build reports such a folder as having no game data, and the data is sent again once as a `romfs.img`.

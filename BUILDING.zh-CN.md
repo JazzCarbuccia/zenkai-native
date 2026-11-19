@@ -1,6 +1,6 @@
 # 从源码构建
 
-启动器（见 [README.zh-CN.md](README.zh-CN.md)）运行的就是终端里的这些脚本。本页是手动路线，给进阶用户、开发，或启动器用不了的时候：工具、你的 `prod.keys`，以及在终端里构建 IPA。英文版：[BUILDING.md](BUILDING.md)。贡献规则见 [CONTRIBUTING.zh-CN.md](CONTRIBUTING.zh-CN.md)。
+Zenkai Native 用本仓库的脚本在终端里构建（见 [README.zh-CN.md](README.zh-CN.md)）。本页记录这唯一的构建路径：工具、你的 `prod.keys`，以及在终端里构建 Mac App。英文版：[BUILDING.md](BUILDING.md)。贡献规则见 [CONTRIBUTING.zh-CN.md](CONTRIBUTING.zh-CN.md)。
 
 ## 取得工具
 
@@ -8,8 +8,8 @@
 Homebrew 工具和 Python 包，然后打 IPA。
 
 ```bash
-git clone https://github.com/<you>/NX2Apple.git
-cd NX2Apple
+git clone https://github.com/<you>/zenkai-native.git
+cd zenkai-native
 brew bundle --file=Brewfile                       # xcodegen, zstd, spirv-cross, glslang（打包脚本会检查它）, .NET SDK
 python3 -m venv .venv                             # Homebrew 的 Python 不允许全局 pip 安装（PEP 668）
 .venv/bin/python -m pip install lz4 capstone fonttools zbic nsz "backports.zstd; python_version < '3.14'"
@@ -68,4 +68,4 @@ GAME=<title id> W=<工作目录> PATCHED=<改写目录> \
 
 `--full-romfs`（或 `DM_FULL_ROMFS=1`）把 RomFS 打进包里——上游行为，只对小体量游戏有意义。
 
-RomFS 不再需要先打成分片归档：构建会把游戏数据写成一个 `romfs.img`。更早做好的分片归档（`romfs.idx` 加 `romfs.00`、`romfs.01`……）不再被读取；启动器会把这样的文件夹视为没有游戏数据，需要再发送一次 `romfs.img`。
+RomFS 不再需要先打成分片归档：构建会把游戏数据写成一个 `romfs.img`。更早做好的分片归档（`romfs.idx` 加 `romfs.00`、`romfs.01`……）不再被读取；构建会把这样的文件夹视为没有游戏数据，需要再发送一次 `romfs.img`。

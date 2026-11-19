@@ -1,6 +1,6 @@
 # Contributing
 
-Issues and pull requests are welcome. NX2Apple is the launcher (`frontend/`, `frontend-qt/`) and the glue around the [nxnative](https://github.com/seedds/nxnative) engine, which is vendored here as a snapshot; its derivation is recorded in [BASELINE_SOURCE.md](BASELINE_SOURCE.md). Building by hand from a terminal (tools, `prod.keys`, the IPA) is on its own page: [BUILDING.md](BUILDING.md).
+Issues and pull requests are welcome. Zenkai Native is a source-only, Dragon Ball FighterZ-focused tree built around the [nxnative](https://github.com/seedds/nxnative) engine, which is vendored here as a snapshot; its derivation is recorded in [BASELINE_SOURCE.md](BASELINE_SOURCE.md). Building from a terminal (tools, `prod.keys`, the Mac app) is on its own page: [BUILDING.md](BUILDING.md).
 
 ## Reporting a problem
 
@@ -9,12 +9,11 @@ Game problems, build problems and launcher problems each have an issue form (`.g
 ## Where an issue goes
 
 - **Here:** the app, a build or install that fails, and a game that does not run well on your Mac or iPhone or iPad.
-- **[Discussions](https://github.com/LNPANDY/NX2Apple/discussions):** questions (Q&A) and ideas (Ideas). Bugs stay issues.
 - **[seedds/nxnative](https://github.com/seedds/nxnative/issues):** how the engine works, porting a new game, a rendering fault you have traced into the engine itself.
 
 ## What a report needs
 
-Pick a form: **Game problem**, **Build problem** or **Launcher problem or idea**. Each asks for what the problem is traced with: the game, its title ID and versions, the target, the device and OS, the NX2Apple version, **Settings > Copy diagnostics**, and the log (a game's log, or the Build log on the Builds page). A report without them gets a request for them first. Where a game's log is: a Mac game in a library folder writes `log/<title ID>.log` beside its app, otherwise `~/Library/Logs/nxnative/<title ID>.log`. On an iPhone or iPad it is `log.txt` in the Files app.
+Pick a form: **Game problem**, **Build problem** or **Launcher problem or idea**. Each asks for what the problem is traced with: the game, its title ID and versions, the target, the device and OS, the Zenkai Native version, **Settings > Copy diagnostics**, and the log (a game's log, or the Build log on the Builds page). A report without them gets a request for them first. Where a game's log is: a Mac game in a library folder writes `log/<title ID>.log` beside its app, otherwise `~/Library/Logs/nxnative/<title ID>.log`. On an iPhone or iPad it is `log.txt` in the Files app.
 
 **Never attach keys, game files or anything extracted from a game.** Logs, screenshots, title IDs and build IDs are fine.
 
@@ -37,7 +36,6 @@ missing piece.
 
 - One change per PR, off `main`. Commit messages say what changed and why, in plain English, as `git log` does.
 - Fill in the PR template: what and why, what was checked, screenshots for UI changes.
-- **`frontend/` and `frontend-qt/` are the fork's own:** change them freely. Run `cd frontend && swift test`. For a UI change also capture the views for visual QA (`NX_LAUNCHER_CAPTURE_DIR`, see [frontend/README.md](frontend/README.md#verification)).
 - **`dm/`, `scripts/`, `docs/` and `ref/` are a vendored snapshot of nxnative**, with the derivation recorded in [BASELINE_SOURCE.md](BASELINE_SOURCE.md). This tree is Zenkai-only: it carries no patch queue and no upstream sync, so direct edits are kept here. Files under `.github/` and in the repository root that are not in that list (this file, the README) are the fork's.
 
 ## For AI agents and other tools
@@ -45,6 +43,6 @@ missing piece.
 Issue forms and the PR template apply in the browser only. `gh issue create`, the API and MCP tools skip the forms, so follow them yourself:
 
 - **Problem reports.** Write the body as `###` headings with the same names as the form's fields (for example `### Game, title ID and versions`, `### Copy diagnostics`, `### The game's log`) and fill every required field from [.github/ISSUE_TEMPLATE](.github/ISSUE_TEMPLATE). Ask the user for what you cannot read yourself: the Copy diagnostics output, the log, the versions. If a required field is missing, do not open the issue.
-- **Ideas and plans.** These have no form. Write plain sections that fit the content, for example `### Idea`, `### Plan` and `### Done when`. Leave out the problem fields (`This is`, `NX2Apple version`, `Computer and OS`, `Copy diagnostics`). Open it with the labels `idea` and `no-triage`.
+- **Ideas and plans.** These have no form. Write plain sections that fit the content, for example `### Idea`, `### Plan` and `### Done when`. Leave out the problem fields (`This is`, `Zenkai Native version`, `Computer and OS`, `Copy diagnostics`). Open it with the labels `idea` and `no-triage`.
 - **Pull requests.** Use the sections of [.github/pull_request_template.md](.github/pull_request_template.md): `gh pr create --template .github/pull_request_template.md`, or the same headings in `--body`. Answer each section and remove the `<!-- -->` hints. Under Fix or feature, tick one box. A change to a vendored path follows the rule above.
 - Never attach or commit keys, game files or data extracted from a game, and do not paste key values into a log or a diagnostics r

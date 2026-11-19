@@ -5,11 +5,13 @@
 - Upstream project: **LNPANDY/NX2Apple** (`https://github.com/LNPANDY/NX2Apple`), MIT.
 - Baseline commit: `e9c351d6b4ae74c482d6f040893256f5d40aa7bb`, branch `main`.
 - Imported upstream baseline: e9c351d6b4ae74c482d6f040893256f5d40aa7bb (local history intentionally not published).
-- The sole remote is `upstream`, fetching from `https://github.com/LNPANDY/NX2Apple`; its push URL
-  is `no-push`. No public remote exists yet and nothing has been pushed.
-- A public push must use `git push <remote> main` only — never `--tags` or `--all`, which would
-  republish the unclean imported history. `upstream/*` remote-tracking refs are local bookkeeping
-  and are not published by a branch-only push.
+- The current `origin` remote is `https://github.com/JazzCarbuccia/zenkai-native.git`; this
+  DBFZ-only tree is published there on the `main` branch.
+- The original baseline reference is `https://github.com/LNPANDY/NX2Apple` at the commit above.
+  NX2Apple and nxnative are the provenance of the vendored engine, not remotes of this repository.
+- Pushes use `git push origin main` only — never `--tags` or `--all`, which would republish the
+  unclean imported history. Any `upstream/*` refs are local bookkeeping and are not published by a
+  branch-only push.
 
 ## Upstream relationship
 

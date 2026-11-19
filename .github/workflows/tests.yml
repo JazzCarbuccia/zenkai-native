@@ -1,5 +1,4 @@
-# Taken from seedds/nxnative's tests.yml (.github is not part of the sync, so it is carried here by hand), plus the fork's own front ends: the Mac launcher
-# (frontend/, swift test) and the Windows Qt front end's pure-Python tests (frontend-qt/tests).
+# Taken from seedds/nxnative's tests.yml (.github is not part of the sync, so it is carried here by hand), kept for this DBFZ-only source tree.
 # Tests that need no game files, keys or GPU. GitHub's macOS runners are virtual Macs without Metal 4 (issue #112), so the tests that go through mtl_init
 # (t_nvn, t_mip_extent, t_rt_range and the rest of dm/gfx/tests' run list) stay local: run `make -C dm/gfx/tests GAME=<id> run` on an Apple-silicon Mac.
 # `profile_guess.py --check` stays local too: it compares the guesses with the extractions of the games (it needs their files).
@@ -155,54 +154,6 @@ jobs:
           name: logs-build
           path: logs
           retention-days: 7
-
-  launcher:
-    name: Mac launcher (frontend, swift test)
-    runs-on: xcode-27
-    timeout-minutes: 20
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-      - name: Release build
-        working-directory: frontend
-        run: |
-          mkdir -p ../logs
-          swift build -c release 2>&1 | tee ../logs/launcher-build.log
-      # The opt-in tests (a real games folder, the README screenshots, the visual QA capture) skip without their variables; the process
-      # fixtures stand in for the NSP script, xcodebuild and devicectl, so nothing is built, signed or installed
-      - name: Tests
-        working-directory: frontend
-        run: swift test 2>&1 | tee ../logs/launcher-tests.log
-      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
-        if: failure()
-        with:
-          name: logs-launcher
-          path: logs
-          retention-days: 7
-
-  launcher-qt:
-    name: Qt front end (frontend-qt tests)
-    runs-on: xcode-27
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
-        with:
-          python-version: '3.14'
-      # Pure Python: the Windows toolchain, IPA and shim logic with the system calls mocked; the few tests that need PySide6 skip without it
-      - name: Tests
-        run: python -m unittest discover -s frontend-qt/tests -v
-      # The Qt table is generated from the SwiftUI one and says so at its top. A string added to
-      # Localization.swift without regenerating it left 18 keys missing here for a day (a source run
-      # of the Qt app shows those as raw keys), so the regeneration is the check: any difference
-      # means the committed table is stale.
-      - name: The Qt language table matches Localization.swift
-        run: |
-          python frontend-qt/gen_localization.py
-          git diff --exit-code -- frontend-qt/nspb_qt/localization.py
 
   ios-build:
     name: Unsigned iOS app (synthetic modules, Swift and link)

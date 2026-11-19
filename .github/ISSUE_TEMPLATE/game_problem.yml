@@ -12,7 +12,7 @@ body:
     attributes:
       label: Game and title ID
       description: The game's name and the title ID of the copy you packed. Regional releases of one game have different title IDs.
-      placeholder: "NieR:Automata The End of YoRHa Edition, 0100B8E016F76000"
+      placeholder: "Dragon Ball FighterZ, 0100A250097F0000"
     validations:
       required: true
   - type: input
@@ -58,9 +58,9 @@ body:
   - type: input
     id: version
     attributes:
-      label: NX2Apple version
-      description: The version shown under Settings, or the release you downloaded. Copy diagnostics (below) also has it.
-      placeholder: v0.4.8
+      label: Zenkai Native version
+      description: The Zenkai Native tree or commit you built from. Copy diagnostics (below) also has it.
+      placeholder: "Phase 0 / baseline import"
     validations:
       required: true
   - type: textarea
