@@ -145,8 +145,8 @@ display version must match the profile's, or the build says so.
 ## For developers
 
 - **Build from source:** [BUILDING.md](BUILDING.md). **Report or fix something:** [CONTRIBUTING.md](CONTRIBUTING.md).
-- **What this fork changes in upstream:** the engine (`dm/`, `scripts/`, `docs/`, `ref/`,
-  `AGENTS.md`) is nxnative at a pinned commit plus a queue of patches, each saying why the fork
+- **What this fork changes in upstream:** the engine (`dm/`, `scripts/`, `docs/`, `ref/`) is
+  nxnative at a pinned commit plus a queue of patches, each saying why the fork
   carries it. [patches/README.md](patches/README.md) explains it, and
   `python3 scripts/patches.py status` lists what is carried. A daily job moves the pin and opens a
   pull request, or an issue naming the patch that no longer fits.
